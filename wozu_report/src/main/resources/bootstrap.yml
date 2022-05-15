@@ -1,0 +1,42 @@
+
+server:
+  port: 8084
+# 应用名称
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/nwe_wozu_us?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    # 自己随便取的名字
+    name: wozu-report-service
+  cloud:
+    nacos:
+      discovery:
+        #必须配置ip地址
+        server-addr: 120.78.132.19:8848
+        # 将自己的服务注册到注册中心
+        register-enabled: true
+        namespace: c557b731-f3cc-4051-a517-5d7eb4718206
+#      config:
+#        enabled: true
+#        file-extension: yaml
+#        server-addr: 120.78.132.19:8848
+#        namespace: c557b731-f3cc-4051-a517-5d7eb4718206
+#        shared-configs[0]:
+#          dataId: wozu-us-service-dev.yaml
+#          refresh: true
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+#暴露监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
