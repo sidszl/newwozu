@@ -1,0 +1,25 @@
+
+server:
+  port: 8082
+# 应用名称
+spring:
+  application:
+    # 自己随便取的名字
+    name: wozu-getway-service
+  cloud:
+    nacos:
+      discovery:
+        #必须配置ip地址
+        server-addr: 120.78.132.19:8848
+        # 将自己的服务注册到注册中心
+        register-enabled: true
+        namespace: c557b731-f3cc-4051-a517-5d7eb4718206
+      config:
+        enabled: true
+        file-extension: yaml
+        server-addr: 120.78.132.19:8848
+        namespace: c557b731-f3cc-4051-a517-5d7eb4718206
+        shared-configs[0]:
+          dataId:  wozu-getway-service-dev.yaml
+          refresh: true
+
