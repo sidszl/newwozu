@@ -40,7 +40,7 @@ public class GatewayFilterConfig implements GlobalFilter, Ordered {
         String requestUrl = exchange.getRequest().getPath().value();
         AntPathMatcher pathMatcher = new AntPathMatcher();
         //1 uaa服务所有放行
-        if (pathMatcher.match("/api/uaa/**", requestUrl)) {
+        if (pathMatcher.match("/api/us/**", requestUrl)) {
             return chain.filter(exchange);
         }
         //2 检查token是否存在
@@ -70,8 +70,6 @@ public class GatewayFilterConfig implements GlobalFilter, Ordered {
             return invalidTokenMono(exchange);
         }
 
-
-
     }
 
 
@@ -83,6 +81,7 @@ public class GatewayFilterConfig implements GlobalFilter, Ordered {
         if (StringUtils.isBlank(tokenStr)) {
             return null;
         }
+        //Authorization : token_type+""+access_token
         String token = tokenStr.split(" ")[1];
         if (StringUtils.isBlank(token)) {
             return null;

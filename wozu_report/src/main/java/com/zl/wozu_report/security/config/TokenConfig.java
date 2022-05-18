@@ -6,15 +6,11 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-/**
- * @Description:
- * @Author: zhurongsheng
- * @Date: 2020/7/12 20:32
- */
+
 @Configuration
 public class TokenConfig {
 
-    private static final String SIGNING_KEY = "uaa";
+    private static final String SIGNING_KEY = "us";
 
 
     @Bean
